@@ -1,0 +1,37 @@
+name: Flutter Web CI # Название workflow (отображается в GitHub Actions)
+
+on: # Когда запускать?
+  push:             # При каждом пуше
+    branches: [main]
+  pull_request:     # И при каждом pull request
+    branches: [main]
+
+jobs:
+  build: # Название задания (job)
+    runs-on: ubuntu-latest # Используем Ubuntu как CI-сервер
+
+    steps: # Шаги pipeline
+      - name: 🔄 Checkout repository
+        uses: actions/checkout@v3
+        # Загружает код из GitHub-репозитория в виртуальную машину CI
+
+      - name: 📦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.1' # Укажи нужную версию Flutter
+        # Устанавливает Flutter SDK нужной версии
+
+      - name: 📥 Install dependencies
+        run: flutter pub get
+        # Загружает зависимости из pubspec.yaml
+
+      - name: 🌐 Build Flutter Web
+        run: flutter build web --release
+        # Сборка приложения в web-формат (HTML/CSS/JS)
+
+      - name: 📤 Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: flutter-web-build
+          path: build/web
+        # Загружает собранные файлы на вкладку "Actions > Artifacts"
