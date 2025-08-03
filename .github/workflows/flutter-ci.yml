@@ -1,0 +1,29 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v3
+
+    - name: 📦 Install Flutter SDK
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.13.1' # или замени на свою версию
+
+    - name: 🔍 Check Flutter version
+      run: flutter --version
+
+    - name: 📚 Install dependencies
+      run: flutter pub get
+
+    - name: 🧪 Run tests
+      run: flutter test
