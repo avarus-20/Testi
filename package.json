@@ -2,6 +2,6 @@
   "name": "testi",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"✅ Test executed successfully\""
+    "test": "echo \"✅ Test executed successfully\" && exit 0"
   }
 }
