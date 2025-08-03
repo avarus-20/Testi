@@ -1,0 +1,12 @@
+{
+  "name": "nutrition-app",
+  "version": "1.0.0",
+  "description": "Simple calorie tracker",
+  "main": "App.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": ["calories", "nutrition"],
+  "license": "MIT",
+  "type": "commonjs"
+}
